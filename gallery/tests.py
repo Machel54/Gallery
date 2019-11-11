@@ -15,3 +15,9 @@ class EditorTestClass(TestCase):
         editors = Editor.objects.all()
         self.assertTrue(len(editors) > 0)
         
+class tagsTestClass(TestCase):
+    def setUp(self):
+        self.world= tags(name='world')
+        
+    def test_instance(self):
+        self.assertTrue(isinstance(self.world,tags))
