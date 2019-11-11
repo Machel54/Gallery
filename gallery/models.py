@@ -46,3 +46,32 @@ class Category(models.Model):
     def __str__(self):
         return self.name
     
+class Image(models.Model):
+    image = models.ImageField(upload_to = 'images/')
+    image_name = models.CharField(max_length=50)
+    description = models.TextField()
+    editor = models.ForeignKey(Editor)
+    tags = models.ManyToManyField(tags)
+    pub_date = models.DateTimeField(auto_now_add= True)
+    image_location = models.ForeignKey(Location)
+    category = models.ForeignKey(Category)
+    
+    def save_image(self):
+        self.save()
+        
+    def delete_image(self):
+        self.delete()
+    
+    @classmethod    
+    def get_image(cls):
+        new = cls.objects.all()
+        return new
+    
+    @classmethod
+    def search_by_category(cls,search_term):
+        new= cls.objects.filter(category__name__icontains = search_term)
+        return new
+    
+    class Meta:
+        verbose_name = 'Image'
+        verbose_name_plural = 'Images'
