@@ -33,3 +33,17 @@ class LocationTestClass(TestCase):
         self.London.save_location()
         locations = Location.objects.all()
         self.assertTrue(len(locations) > 0)
+        
+        
+class CategoryTestClass(TestCase):
+    def setUp(self):
+        self.culture= Category(name='cool')
+        
+    def test_instance(self):
+        self.assertTrue(isinstance(self.culture,Category))
+        
+    def test_save_method(self):
+        self.culture.save_category()
+        categories = Category.objects.all()
+        self.assertTrue(len(categories) > 0)
+        
