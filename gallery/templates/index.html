@@ -38,4 +38,53 @@
         <img src="https://images.pexels.com/photos/2085047/pexels-photo-2085047.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"style="width:1400px;">
     </div>
 </div>
+<div class="container">
+        {% for new_item in new %}
+<div class="row">
+    
+    
+
+        <!-- <div class="col-sm-6 col-md-4">
+            <br>
+            <img src="{{new_item.image.url}}" class="img-responsive" alt="Image" style="width: 600px; height: 550px;" data-toggle="modal" data-target="#basicExampleModal{{new_item.id}}">
+            <br>
+        </div> -->
+        <div class="col-xs-6 col-md-4">
+            <a href="#" class="thumbnail">
+            <img src="{{new_item.image.url}}" class="img-responsive" alt="Image"  data-toggle="modal" data-target="#basicExampleModal{{new_item.id}}">
+            </a>
+            </div>
+    
+        <div class="modal fade" id="basicExampleModal{{new_item.id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">{{new_item.image_name}}</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </div>
+                <div class="modal-body">
+                    <img src="{{new_item.image.url}}" class="img-responsive" alt="Image" style="width: 765px; height: 550px;">
+                    <hr>
+                    <p>Description: {{new_item.description}}</p>
+                    <p>Editor: {{new_item.editor}}</p>
+                    <p>Posted: {{new_item.pub_date |timesince}} ago</p>
+                    <p>Location: {{new_item.image_location}}</p>
+                </div>
+                <div class="modal-footer">
+                </div>
+                </div>
+            </div>
+            </div>
+        
+    
+    <br>
+    {% empty %}
+    <div class="row">
+        <h2 class="text-center">There No News Items</h2>
+    </div>
+</div>
+{% endfor %}
+</div>
 {% endblock %}

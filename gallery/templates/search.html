@@ -1,0 +1,32 @@
+{%extends 'all-gallery/base.html'%}
+
+{% block content %}
+<div class="container-fluid">
+
+<div class="row" style="margin-top: 30px;">
+    
+    {% if images%}
+    <h2 style="margin-left: 700px;">Found {{ images|length }} images of searched term {{message}}</h2>
+    {% else %}
+    <h2> Found 0 images for the search term {{message}}</h2>
+    {% endif %}
+    
+
+</div>
+
+
+<div class="row" style="margin-top: 70px;">
+
+{% if images %}
+    {% for image in images %}
+    <div class="col-xs-6 col-md-4">
+        <div class="thumbnail">
+        <h1>{{image.image_name}}</h1>
+        <img src="{{image.image.url}}" class="img-responsive" alt="Image" style="width: 600px; height: 550px;">
+        </div>
+    </div>
+    {% endfor %}
+{% endif %}
+</div>
+</div>
+{% endblock %}
