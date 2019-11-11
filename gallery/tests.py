@@ -21,3 +21,15 @@ class tagsTestClass(TestCase):
         
     def test_instance(self):
         self.assertTrue(isinstance(self.world,tags))
+        
+class LocationTestClass(TestCase):
+    def setUp(self):
+        self.London= Location(name='London')
+        
+    def test_instance(self):
+        self.assertTrue(isinstance(self.London,Location))
+        
+    def test_save_method(self):
+        self.London.save_location()
+        locations = Location.objects.all()
+        self.assertTrue(len(locations) > 0)
